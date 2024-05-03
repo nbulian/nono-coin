@@ -25,8 +25,8 @@ Installation instructions are currently being determined and will be updated soo
 
 
 ```bash
-# Example installation command
-$ 
+# Installation command
+$ pip install -r requirements.txt
 ```
 
 ## Usage
