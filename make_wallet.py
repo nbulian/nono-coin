@@ -4,17 +4,8 @@ import secrets
 import ecdsa
 import hashlib
 import base58
+import utils
 from ripemd import ripemd160
-
-def hash(msg):
-    # Hash with SHA-256 algorithm
-    hash_sha256 = hashlib.sha256(bytes.fromhex(msg)).digest()
-
-    # Get RIPEMD-160 hash as bytes
-    h = ripemd160.new(hash_sha256)
-    ripemd_hash = h.digest()
-
-    return ripemd_hash
 
 def create_private_key_wif(private_key):
     # Step 1: Concatenate '80' with the private key and convert it to bytes
@@ -102,7 +93,7 @@ def make_wallet():
     print('> Public ECDSA key created:', public_key_hex)
     
     # generate public key hash
-    public_key_hash_bytes = hash(public_key_hex)
+    public_key_hash_bytes = utils.hash(public_key_hex)
     public_key_hash_hex = public_key_hash_bytes.hex()
     print('> Public key RIPEMD-160 created:', public_key_hash_hex)
     
