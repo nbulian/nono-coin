@@ -26,12 +26,20 @@ def hash(msg):
 
     return ripemd_hash
 
-# get a base58 encoded BTC address given a user's public key
 def get_address(public_key):
-    # Obtain public key hash
-    public_key_hash = hash(public_key)
+    # Compute the hash160 digest of the public key
+    hash160_digest = hash(public_key)
     
-    # Encode public key hash in base58
-    address = base58.b58encode(public_key_hash)
+    # Set the version bytes for the Bitcoin mainnet addresses
+    version = b'\x00'
+    
+    # Calculate the checksum by double hashing the version concatenated with the hash160 digest
+    checksum = hashlib.sha256(hashlib.sha256(version + hash160_digest).digest()).digest()[:4]
+    
+    # Concatenate the version, hash160 digest, and checksum to form the address bytes
+    address_bytes = version + hash160_digest + checksum
+    
+    # Encode the address bytes using Base58 encoding
+    address = base58.b58encode(address_bytes).decode('utf-8')
     
     return address

@@ -107,11 +107,11 @@ def make_wallet():
     print('> Private key WIF (wallet import format) created:', private_key_wif)
     
     wallet = {
-        "private_key_hex": private_key_hex,
+        "private_key_hex": private_key_hex.upper(),
         "private_key_wif": private_key_wif,
-        "public_key": public_key_hex,
-        "public_key_hash": public_key_hash_hex,
-        "public_address": public_address,
+        "public_key": "04" + public_key_hex.upper(),
+        "public_key_hash": public_key_hash_hex.upper(),
+        "public_address": public_address
     }
 
     return wallet
