@@ -14,6 +14,9 @@ Course creator by [Tom Goldenberg](https://www.udemy.com/course/breaking-down-bi
   - [Table of Contents](#table-of-contents)
   - [Bitcoin Transaction Anatomy](#bitcoin-transaction-anatomy)
     - [Example Bitcoin Transaction](#example-bitcoin-transaction)
+  - [Opening Port 8333/18333 for Bitcoin Node](#opening-port-833318333-for-bitcoin-node)
+    - [Why Open Port 8333/18333?](#why-open-port-833318333)
+    - [Opening Port 8333/18333:](#opening-port-833318333)
   - [Installation](#installation)
   - [Usage](#usage)
   - [Contributing](#contributing)
@@ -66,6 +69,31 @@ Course creator by [Tom Goldenberg](https://www.udemy.com/course/breaking-down-bi
     ]
 }
 ```
+
+## Opening Port 8333/18333 for Bitcoin Node
+
+To run a Bitcoin node and allow it to communicate with other nodes on the Bitcoin network, you need to open port 8333 (mainnet) or 18333 (testnet) on your computer. Here's why and how you can do it:
+
+### Why Open Port 8333/18333?
+- Node Communication: Bitcoin nodes communicate with each other using the Bitcoin protocol over the internet. Opening port 8333 (mainnet) or 18333 (testnet) allows incoming connections from other nodes, enabling your node to participate in the peer-to-peer network.
+- Network Health: By running a node and allowing incoming connections, you contribute to the health and decentralization of the Bitcoin network. Your node helps propagate transactions and blocks, making the network more robust and resistant to censorship.
+
+### Opening Port 8333/18333:
+Using ufw (Uncomplicated Firewall):If you're using Linux with ufw installed, you can open port 8333 (mainnet) or 18333 (testnet) with the following commands:
+
+```bash
+sudo ufw enable  # Enable ufw if it's not already enabled
+sudo ufw allow 8333/tcp  # Open port 8333 for mainnet
+sudo ufw allow 18333/tcp  # Open port 18333 for testnet
+```
+
+This allows incoming TCP traffic on port 8333 or 18333, depending on your network (mainnet or testnet).
+
+If your computer is behind a router, you may also need to configure port forwarding on your router to allow incoming connections on port 8333/18333 to reach your computer. Refer to your router's manual or documentation for instructions on how to set up port forwarding.
+
+By opening port 8333 (mainnet) or 18333 (testnet) and allowing incoming connections, your Bitcoin node will be able to communicate with other nodes on the network, contributing to the strength and resilience of the Bitcoin ecosystem.
+
+Check if your port is open to internet from here https://canyouseeme.org/
 
 ## Installation
 
